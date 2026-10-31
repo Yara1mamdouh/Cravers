@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cravers Admin | لوحة إدارة أصناف كريفيرز</title>
+
+  <!-- Inline SVG Brand Favicon Data-URI -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23121418' stroke='%23FF6B35' stroke-width='3'/%3E%3Cpath d='M50 14 C58 24 64 30 62 42 C60 36 56 34 54 30 C53 40 47 44 43 40 C43 32 46 22 50 14 Z' fill='%23FF6B35'/%3E%3Cpath d='M50 20 C54 28 58 32 56 39 C55 35 52 33 50 31 C49 37 46 39 44 37 C45 31 47 25 50 20 Z' fill='%23FFAA00'/%3E%3Cpath d='M22 47 C22 34 33 32 50 32 C67 32 78 34 78 47 C78 50 75 51 70 51 L30 51 C25 51 22 50 22 47 Z' fill='%23FFA439'/%3E%3Cpath d='M20 52 L80 52 L78 56 L72 56 L70 60 L65 56 L53 56 L50 63 L45 56 L35 56 L33 61 L28 56 L20 56 Z' fill='%23FFC107'/%3E%3Crect x='22' y='57' width='56' height='8' rx='4' fill='%235A2E14'/%3E%3Cpath d='M20 66 Q 35 70 50 67 Q 65 63 80 66 L78 68 L22 68 Z' fill='%234CAF50'/%3E%3Cpath d='M25 69 L75 69 C77 69 78 70 78 72 C78 79 67 82 50 82 C33 82 22 79 22 72 C22 70 23 69 25 69 Z' fill='%23FFA439'/%3E%3C/svg%3E">
+
+  <!-- Google Fonts: Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <!-- Cravers CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       ADMIN NAVBAR
+       ========================================================================= -->
+  <nav class="navbar navbar-expand-lg navbar-cravers sticky-top">
+    <div class="container">
+      <a class="brand-logo-container" href="index.html">
+        <div class="brand-icon">
+          <svg viewBox="0 0 100 100" width="30" height="30">
+            <circle cx="50" cy="50" r="48" fill="#121418"/>
+            <path d="M50 14 C58 24 64 30 62 42 C60 36 56 34 54 30 C53 40 47 44 43 40 C43 32 46 22 50 14 Z" fill="#FF6B35"/>
+            <path d="M50 20 C54 28 58 32 56 39 C55 35 52 33 50 31 C49 37 46 39 44 37 C45 31 47 25 50 20 Z" fill="#FFAA00"/>
+            <path d="M22 47 C22 34 33 32 50 32 C67 32 78 34 78 47 C78 50 75 51 70 51 L30 51 C25 51 22 50 22 47 Z" fill="#FFA439"/>
+            <path d="M20 52 L80 52 L78 56 L72 56 L70 60 L65 56 L53 56 L50 63 L45 56 L35 56 L33 61 L28 56 L20 56 Z" fill="#FFC107"/>
+            <rect x="22" y="57" width="56" height="8" rx="4" fill="#5A2E14"/>
+            <path d="M20 66 Q 35 70 50 67 Q 65 63 80 66 L78 68 L22 68 Z" fill="#4CAF50"/>
+            <path d="M25 69 L75 69 C77 69 78 70 78 72 C78 79 67 82 50 82 C33 82 22 79 22 72 C22 70 23 69 25 69 Z" fill="#FFA439"/>
+          </svg>
+        </div>
+        <div class="brand-title-wrap">
+          <span class="brand-name">CRAVERS <span>| ADMIN</span></span>
+          <span class="brand-slogan">Menu Management Panel / لوحة التحكم</span>
+        </div>
+      </a>
+
+      <div class="d-flex align-items-center gap-2 ms-auto">
+        <a href="index.html" class="btn btn-cravers-outline d-flex align-items-center gap-2">
+          <i class="bi bi-arrow-left"></i>
+          <span>Live Customer Menu / المنيو</span>
+        </a>
+        <button class="theme-toggle-btn" title="Toggle Theme / تغيير النمط">
+          <i class="bi bi-sun-fill"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =========================================================================
+       METRICS & ACTIONS BANNER
+       ========================================================================= -->
+  <div class="container my-4">
+    <div class="row g-3">
+      <div class="col-sm-6 col-lg-3">
+        <div class="glass-panel p-3 d-flex align-items-center gap-3">
+          <div class="rounded-3 p-3 bg-primary bg-opacity-10 text-primary fs-3">
+            <i class="bi bi-grid-fill"></i>
+          </div>
+          <div>
+            <div class="small text-secondary">Total Menu Dishes</div>
+            <div class="fs-4 fw-bolder" id="statTotalItems">0</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="glass-panel p-3 d-flex align-items-center gap-3">
+          <div class="rounded-3 p-3 bg-warning bg-opacity-10 text-warning fs-3">
+            <i class="bi bi-tags-fill"></i>
+          </div>
+          <div>
+            <div class="small text-secondary">Categories</div>
+            <div class="fs-4 fw-bolder">8 Active</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="glass-panel p-3 d-flex align-items-center gap-3">
+          <div class="rounded-3 p-3 bg-success bg-opacity-10 text-success fs-3">
+            <i class="bi bi-plus-circle-fill"></i>
+          </div>
+          <div>
+            <div class="small text-secondary">Custom Dishes</div>
+            <div class="fs-4 fw-bolder" id="statCustomItems">0</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="glass-panel p-3 d-flex align-items-center gap-3">
+          <div class="rounded-3 p-3 bg-info bg-opacity-10 text-info fs-3">
+            <i class="bi bi-shield-lock-fill"></i>
+          </div>
+          <div>
+            <div class="small text-secondary">Storage Mode</div>
+            <div class="fs-6 fw-bold text-success">Local Persistence</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Management Controls Bar -->
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-4 mb-3">
+      <div>
+        <h4 class="fw-bold mb-1">Cravers Dish Catalog</h4>
+        <p class="text-secondary small mb-0">Add custom dishes, update prices, or remove items in real-time.</p>
+      </div>
+      <div class="d-flex flex-wrap gap-2">
+        <button class="btn btn-cravers-outline btn-sm" id="btnOpenConfigModal">
+          <i class="bi bi-shield-lock me-1"></i> EmailJS & WhatsApp Settings
+        </button>
+        <button class="btn btn-outline-danger btn-sm" id="btnResetMenu">
+          <i class="bi bi-arrow-counterclockwise me-1"></i> Reset to Defaults
+        </button>
+        <button class="btn btn-cravers btn-sm" id="btnOpenAddDishModal">
+          <i class="bi bi-plus-lg me-1"></i> Add New Dish / إضافة صنف
+        </button>
+      </div>
+    </div>
+
+    <!-- Items Table / Grid View -->
+    <div class="glass-panel p-0 overflow-hidden mb-5">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0" id="adminDishesTable">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col" style="width: 70px;">Item</th>
+              <th scope="col">English & Arabic Title</th>
+              <th scope="col">Category</th>
+              <th scope="col">Price</th>
+              <th scope="col">Type</th>
+              <th scope="col" class="text-end">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="adminDishesTableBody">
+            <!-- Rendered by Admin script -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       ADD / EDIT DISH MODAL
+       ========================================================================= -->
+  <div class="modal fade cravers-modal" id="adminDishModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold" id="adminDishModalTitle">Add New Dish / إضافة صنف جديد</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="adminDishForm">
+          <div class="modal-body">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label small fw-bold">English Title *</label>
+                <input type="text" class="form-control cravers-form-control" id="dishInputTitle" placeholder="e.g. Crispy Truffle Wagyu Smash" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small fw-bold">Arabic Title (الاسم بالعربي) *</label>
+                <input type="text" class="form-control cravers-form-control" id="dishInputTitleAr" placeholder="مثال: برجر واجيو بالترفل المقرمش" required>
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label small fw-bold">Category *</label>
+                <select class="form-select cravers-form-control" id="dishInputCategory" required>
+                  <option value="burgers">Beef Burgers (برجر لحم فاخر)</option>
+                  <option value="chicken">Crispy Chicken (دجاج كرانشي)</option>
+                  <option value="pizzas">Loaded Pizzas (بيتزا كريفيرز)</option>
+                  <option value="appetizers">Loaded Fries & Sides (مقبلات وبطاطس)</option>
+                  <option value="pasta">Pasta & Mac (باستا وماك آند تشيز)</option>
+                  <option value="drinks">Shakes & Beverages (ميلك شيك ومشروبات)</option>
+                  <option value="desserts">Decadent Sweets (حلويات فاخرة)</option>
+                  <option value="sauces">Signature Dips (صوصات وتغميسات)</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label small fw-bold">Base Price (EGP) *</label>
+                <input type="number" step="1" min="10" class="form-control cravers-form-control" id="dishInputPrice" placeholder="175" required>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label small fw-bold">Badge Tag (اختياري)</label>
+                <input type="text" class="form-control cravers-form-control" id="dishInputBadge" placeholder="e.g. Chef's Special ⭐">
+              </div>
+
+              <div class="col-md-12">
+                <label class="form-label small fw-bold">Image URL *</label>
+                <input type="url" class="form-control cravers-form-control" id="dishInputImage" placeholder="https://images.unsplash.com/..." required>
+                <div class="form-text small text-muted">Use any high resolution image URL.</div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label small fw-bold">English Description</label>
+                <textarea class="form-control cravers-form-control" id="dishInputDesc" rows="2" placeholder="Ingredients, flavors, buns..."></textarea>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small fw-bold">Arabic Description (الوصف بالعربي)</label>
+                <textarea class="form-control cravers-form-control" id="dishInputDescAr" rows="2" placeholder="المكونات، التوابل، النكهات..."></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-cravers-outline" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-cravers" id="btnSaveDish">
+              <i class="bi bi-check-lg me-1"></i> Save Dish / حفظ الصنف
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       DYNAMIC CONFIGURATION MODAL (EMAILJS & WHATSAPP)
+       ========================================================================= -->
+  <div class="modal fade cravers-modal" id="adminConfigModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold">
+            <i class="bi bi-envelope-gear text-primary me-2"></i>EmailJS & WhatsApp Settings
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="adminConfigForm">
+          <div class="modal-body">
+            <div class="p-3 mb-3 rounded-3" style="background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.3);">
+              <h6 class="fw-bold text-cravers mb-1"><i class="bi bi-envelope-check me-1"></i> إرسال رمز OTP عبر سيرفر جيميل (Gmail SMTP)</h6>
+              <p class="small text-secondary mb-2">
+                لتفعيل إرسال كود التحقق الحقيقي إلى بريدك (Gmail) مباشرة عبر السيرفر:
+              </p>
+              <div class="mb-2">
+                <label class="form-label small fw-bold">حساب جيميل المرسل (Gmail Address)</label>
+                <input type="email" class="form-control cravers-form-control" id="cfgSmtpUser" placeholder="e.g. myrestaurant@gmail.com">
+              </div>
+              <div class="mb-2">
+                <label class="form-label small fw-bold">كلمة مرور التطبيقات (Google App Password - 16 حرفاً)</label>
+                <input type="password" class="form-control cravers-form-control" id="cfgSmtpPass" placeholder="e.g. abcd efgh ijkl mnop">
+                <div class="form-text small text-secondary">
+                  تُولد من حساب جوجل: Security ➔ 2-Step Verification ➔ App passwords
+                </div>
+              </div>
+            </div>
+
+            <h6 class="fw-bold mb-2"><i class="bi bi-globe me-1"></i> EmailJS Settings (بديل المتصفح)</h6>
+            <div class="mb-2">
+              <label class="form-label small fw-bold">EmailJS Public Key</label>
+              <input type="text" class="form-control cravers-form-control" id="cfgPublicKey" placeholder="e.g. user_xxxxxxxxxxxxxx">
+            </div>
+
+            <div class="mb-2">
+              <label class="form-label small fw-bold">EmailJS Service ID</label>
+              <input type="text" class="form-control cravers-form-control" id="cfgServiceId" placeholder="e.g. service_cravers">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label small fw-bold">EmailJS Template ID</label>
+              <input type="text" class="form-control cravers-form-control" id="cfgTemplateId" placeholder="e.g. template_otp123">
+            </div>
+
+            <h6 class="fw-bold mb-2"><i class="bi bi-whatsapp text-success me-1"></i> WhatsApp Settings (إعدادات الواتساب)</h6>
+            <div class="mb-2">
+              <label class="form-label small fw-bold">Restaurant WhatsApp Number (رقم المطعم المستلم)</label>
+              <input type="tel" class="form-control cravers-form-control" id="cfgPhone" placeholder="e.g. 201012345678 (no + or spaces)">
+            </div>
+            <div class="p-2 mb-3 rounded-3" style="background: rgba(37,211,102,0.08); border: 1px dashed rgba(37,211,102,0.4);">
+              <div class="small fw-bold text-success mb-1">🤖 Automated WhatsApp Gateway (UltraMsg API)</div>
+              <div class="small text-secondary mb-2">
+                للإرسال الآلي مباشرة لهاتف العميل: "طلبك وصل المطبخ وجاري التجهيز!". وإذا لم تتوفر باقة فعالة، يتحول النظام تلقائياً لفتح الواتساب للمطعم (Fallback).
+              </div>
+              <div class="mb-2">
+                <label class="form-label small fw-bold">UltraMsg Instance ID</label>
+                <input type="text" class="form-control cravers-form-control" id="cfgUltraMsgInstanceId" placeholder="e.g. instance12345">
+              </div>
+              <div class="mb-1">
+                <label class="form-label small fw-bold">UltraMsg Token</label>
+                <input type="password" class="form-control cravers-form-control" id="cfgUltraMsgToken" placeholder="e.g. abcdef123456">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-between">
+            <button type="button" class="btn btn-outline-danger btn-sm" id="btnClearConfig">
+              Reset Config
+            </button>
+            <div class="d-flex gap-2">
+              <button type="button" class="btn btn-cravers-outline" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-cravers">
+                <i class="bi bi-save me-1"></i> Save Settings
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Admin Controller Module -->
+  <script type="module">
+    import { storage } from './assets/js/core/storage.js';
+    import { DEFAULT_MENU_ITEMS } from './assets/js/core/menuData.js';
+    import { themeUI } from './assets/js/ui/themeUI.js';
+
+    let adminModalInstance = null;
+    let configModalInstance = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      themeUI.init();
+
+      const modalEl = document.getElementById('adminDishModal');
+      if (modalEl && window.bootstrap) {
+        adminModalInstance = new window.bootstrap.Modal(modalEl);
+      }
+
+      const configEl = document.getElementById('adminConfigModal');
+      if (configEl && window.bootstrap) {
+        configModalInstance = new window.bootstrap.Modal(configEl);
+      }
+
+      renderAdminTable();
+      bindAdminEvents();
+    });
+
+    function getCombinedMenu() {
+      const customItems = storage.getCustomMenu() || [];
+      return {
+        defaultItems: DEFAULT_MENU_ITEMS,
+        customItems,
+        all: [...DEFAULT_MENU_ITEMS, ...customItems]
+      };
+    }
+
+    function renderAdminTable() {
+      const { defaultItems, customItems, all } = getCombinedMenu();
+      const tbody = document.getElementById('adminDishesTableBody');
+      const statTotal = document.getElementById('statTotalItems');
+      const statCustom = document.getElementById('statCustomItems');
+
+      if (statTotal) statTotal.textContent = all.length;
+      if (statCustom) statCustom.textContent = customItems.length;
+
+      if (!tbody) return;
+
+      tbody.innerHTML = all.map((dish) => {
+        const isCustom = customItems.some((c) => c.id === dish.id);
+        const categoryLabels = {
+          burgers: 'Beef Burgers',
+          chicken: 'Crispy Chicken',
+          pizzas: 'Loaded Pizzas',
+          appetizers: 'Loaded Fries & Sides',
+          pasta: 'Pasta & Mac',
+          drinks: 'Shakes & Beverages',
+          desserts: 'Decadent Sweets',
+          sauces: 'Signature Dips'
+        };
+
+        return `
+          <tr>
+            <td>
+              <img src="${dish.image}" alt="${dish.title}" class="rounded-3 object-fit-cover" width="50" height="50" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100&auto=format&fit=crop&q=80'">
+            </td>
+            <td>
+              <div class="fw-bold">${dish.title}</div>
+              <div class="small text-primary">${dish.titleAr || ''}</div>
+            </td>
+            <td>
+              <span class="badge bg-secondary">${categoryLabels[dish.category] || dish.category}</span>
+            </td>
+            <td>
+              <span class="fw-bold">${dish.price} EGP</span>
+            </td>
+            <td>
+              ${isCustom 
+                ? '<span class="badge bg-success">Custom Dish</span>' 
+                : '<span class="badge bg-dark border border-secondary">System Default</span>'}
+            </td>
+            <td class="text-end">
+              ${isCustom ? `
+                <button class="btn btn-sm btn-outline-danger py-1 px-2 btn-delete-custom" data-id="${dish.id}" title="Delete Custom Dish">
+                  <i class="bi bi-trash3"></i> Delete
+                </button>
+              ` : `
+                <span class="small text-muted fst-italic">Read-only</span>
+              `}
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      tbody.querySelectorAll('.btn-delete-custom').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const dishId = btn.dataset.id;
+          if (confirm('Are you sure you want to remove this custom dish?')) {
+            const currentCustom = storage.getCustomMenu() || [];
+            const updated = currentCustom.filter((c) => c.id !== dishId);
+            storage.saveCustomMenu(updated);
+            showAdminToast('Dish removed successfully.', 'info');
+            renderAdminTable();
+          }
+        });
+      });
+    }
+
+    function bindAdminEvents() {
+      const openBtn = document.getElementById('btnOpenAddDishModal');
+      if (openBtn) {
+        openBtn.addEventListener('click', () => {
+          document.getElementById('adminDishForm').reset();
+          document.getElementById('dishInputImage').value = 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=700&auto=format&fit=crop&q=80';
+          if (adminModalInstance) adminModalInstance.show();
+        });
+      }
+
+      const form = document.getElementById('adminDishForm');
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          const title = document.getElementById('dishInputTitle').value.trim();
+          const titleAr = document.getElementById('dishInputTitleAr').value.trim();
+          const category = document.getElementById('dishInputCategory').value;
+          const price = Number(document.getElementById('dishInputPrice').value) || 150;
+          const badge = document.getElementById('dishInputBadge').value.trim();
+          const image = document.getElementById('dishInputImage').value.trim();
+          const description = document.getElementById('dishInputDesc').value.trim();
+          const descriptionAr = document.getElementById('dishInputDescAr').value.trim();
+
+          const newDish = {
+            id: 'crv-custom-' + Date.now(),
+            title,
+            titleAr,
+            category,
+            price,
+            badge: badge || 'New ✨',
+            image: image || 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=700&auto=format&fit=crop&q=80',
+            description: description || 'Fresh gourmet handcrafted Cravers dish made with artisanal ingredients.',
+            descriptionAr: descriptionAr || 'صنف كريفيرز المحضر يدويًا بمكونات طازجة وجودة استثنائية.',
+            calories: '700 kcal',
+            prepTime: '15 min',
+            sizes: [
+              { id: 'regular', name: 'Regular (حجم عادي)', priceDiff: 0, default: true },
+              { id: 'large', name: 'Large (حجم كبير)', priceDiff: 40 }
+            ],
+            extras: [
+              { id: 'ex-cheese', name: 'Extra Melted Cheese (جبن إضافي)', price: 20 },
+              { id: 'ex-sauce', name: 'Signature Cravers Sauce (صوص خاص)', price: 15 }
+            ]
+          };
+
+          const currentCustom = storage.getCustomMenu() || [];
+          currentCustom.push(newDish);
+          storage.saveCustomMenu(currentCustom);
+
+          if (adminModalInstance) adminModalInstance.hide();
+          showAdminToast(`Dish "${title}" added to Cravers menu! ✨`, 'success');
+          renderAdminTable();
+        });
+      }
+
+      const resetBtn = document.getElementById('btnResetMenu');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          if (confirm('Reset custom menu dishes back to original defaults?')) {
+            storage.clearCustomMenu();
+            showAdminToast('Menu reset to defaults.', 'info');
+            renderAdminTable();
+          }
+        });
+      }
+
+      // Configuration Modal bindings
+      const openConfigBtn = document.getElementById('btnOpenConfigModal');
+      if (openConfigBtn) {
+        openConfigBtn.addEventListener('click', () => {
+          const cfg = storage.getEmailConfig() || {};
+          document.getElementById('cfgPublicKey').value = cfg.publicKey || '';
+          document.getElementById('cfgServiceId').value = cfg.serviceId || '';
+          document.getElementById('cfgTemplateId').value = cfg.templateId || '';
+          document.getElementById('cfgPhone').value = cfg.phone || '';
+          document.getElementById('cfgSmtpUser').value = cfg.smtpUser || '';
+          document.getElementById('cfgSmtpPass').value = cfg.smtpPass || '';
+          document.getElementById('cfgUltraMsgInstanceId').value = cfg.ultraMsgInstanceId || '';
+          document.getElementById('cfgUltraMsgToken').value = cfg.ultraMsgToken || '';
+          if (configModalInstance) configModalInstance.show();
+        });
+      }
+
+      const configForm = document.getElementById('adminConfigForm');
+      if (configForm) {
+        configForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const publicKey = document.getElementById('cfgPublicKey').value.trim();
+          const serviceId = document.getElementById('cfgServiceId').value.trim();
+          const templateId = document.getElementById('cfgTemplateId').value.trim();
+          const phone = document.getElementById('cfgPhone').value.trim();
+          const smtpUser = document.getElementById('cfgSmtpUser').value.trim();
+          const smtpPass = document.getElementById('cfgSmtpPass').value.trim();
+          const ultraMsgInstanceId = document.getElementById('cfgUltraMsgInstanceId').value.trim();
+          const ultraMsgToken = document.getElementById('cfgUltraMsgToken').value.trim();
+
+          storage.saveEmailConfig({
+            publicKey,
+            serviceId,
+            templateId,
+            phone,
+            smtpUser,
+            smtpPass,
+            ultraMsgInstanceId,
+            ultraMsgToken
+          });
+
+          if (smtpUser && smtpPass) {
+            try {
+              const apiBase = (window.location.protocol === 'file:' || (window.location.port && window.location.port !== '3000')) ? 'http://localhost:3000' : '';
+              const res = await fetch(`${apiBase}/api/config/smtp`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ smtpUser, smtpPass })
+              });
+              if (res.ok) {
+                showAdminToast('تم حفظ وتفعيل إعدادات سيرفر جيميل بنجاح! 🚀', 'success');
+              }
+            } catch (err) {
+              console.warn('[Admin] Could not reach /api/config/smtp:', err);
+            }
+          }
+
+          if (configModalInstance) configModalInstance.hide();
+          showAdminToast('تم حفظ الإعدادات بنجاح! ✨', 'success');
+        });
+      }
+
+      const clearConfigBtn = document.getElementById('btnClearConfig');
+      if (clearConfigBtn) {
+        clearConfigBtn.addEventListener('click', () => {
+          if (confirm('Clear saved dynamic API keys?')) {
+            storage.clearEmailConfig();
+            document.getElementById('adminConfigForm').reset();
+            showAdminToast('Configuration cleared to code defaults.', 'info');
+          }
+        });
+      }
+    }
+
+    function showAdminToast(message, type = 'info') {
+      const toastContainer = document.getElementById('toastContainer');
+      if (!toastContainer) return;
+
+      const toastEl = document.createElement('div');
+      toastEl.className = 'cravers-toast';
+      toastEl.innerHTML = `
+        <i class="bi bi-check-circle-fill text-${type} fs-5"></i>
+        <div class="flex-grow-1" style="font-size: 0.88rem;">${message}</div>
+        <button type="button" class="btn-close btn-close-white ms-2" aria-label="Close"></button>
+      `;
+
+      toastContainer.appendChild(toastEl);
+      const closeBtn = toastEl.querySelector('.btn-close');
+      const dismiss = () => {
+        toastEl.style.opacity = '0';
+        toastEl.style.transform = 'translateY(-10px)';
+        setTimeout(() => toastEl.remove(), 250);
+      };
+      closeBtn.addEventListener('click', dismiss);
+      setTimeout(dismiss, 4000);
+    }
+  </script>
+</body>
+</html>

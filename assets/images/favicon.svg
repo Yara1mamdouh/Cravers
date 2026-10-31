@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="flameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#FF4500"/>
+      <stop offset="60%" stop-color="#FF6B35"/>
+      <stop offset="100%" stop-color="#FFAA00"/>
+    </linearGradient>
+    <linearGradient id="bunGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFA439"/>
+      <stop offset="100%" stop-color="#E07A18"/>
+    </linearGradient>
+    <linearGradient id="pattyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5A2E14"/>
+      <stop offset="100%" stop-color="#3D1A07"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Circle with subtle glow -->
+  <circle cx="50" cy="50" r="48" fill="#121418" stroke="#FF6B35" stroke-width="2.5"/>
+
+  <!-- Stylized Flame Aura behind burger -->
+  <path d="M50 14 C58 24 64 30 62 42 C60 36 56 34 54 30 C53 40 47 44 43 40 C43 32 46 22 50 14 Z" fill="url(#flameGrad)" opacity="0.9"/>
+  <path d="M50 20 C54 28 58 32 56 39 C55 35 52 33 50 31 C49 37 46 39 44 37 C45 31 47 25 50 20 Z" fill="#FFE259"/>
+
+  <!-- Top Bun -->
+  <path d="M22 47 C22 34 33 32 50 32 C67 32 78 34 78 47 C78 50 75 51 70 51 L30 51 C25 51 22 50 22 47 Z" fill="url(#bunGrad)"/>
+  
+  <!-- Sesame seeds -->
+  <ellipse cx="38" cy="40" rx="1.5" ry="1" fill="#FFF2D6" transform="rotate(-15 38 40)"/>
+  <ellipse cx="50" cy="37" rx="1.5" ry="1" fill="#FFF2D6"/>
+  <ellipse cx="62" cy="40" rx="1.5" ry="1" fill="#FFF2D6" transform="rotate(15 62 40)"/>
+  <ellipse cx="44" cy="45" rx="1.5" ry="1" fill="#FFF2D6" transform="rotate(-5 44 45)"/>
+  <ellipse cx="56" cy="45" rx="1.5" ry="1" fill="#FFF2D6" transform="rotate(10 56 45)"/>
+
+  <!-- Melted Cheese Layer (Golden Drips) -->
+  <path d="M20 52 L80 52 L78 56 L72 56 L70 60 L65 56 L53 56 L50 63 L45 56 L35 56 L33 61 L28 56 L20 56 Z" fill="#FFC107"/>
+
+  <!-- Juicy Burger Patty -->
+  <rect x="22" y="57" width="56" height="8" rx="4" fill="url(#pattyGrad)"/>
+
+  <!-- Fresh Lettuce / Greens -->
+  <path d="M20 66 Q 25 64 30 67 Q 35 70 40 66 Q 45 63 50 67 Q 55 70 60 66 Q 65 63 70 67 Q 75 70 80 66 L78 68 L22 68 Z" fill="#4CAF50"/>
+
+  <!-- Bottom Bun -->
+  <path d="M25 69 L75 69 C77 69 78 70 78 72 C78 79 67 82 50 82 C33 82 22 79 22 72 C22 70 23 69 25 69 Z" fill="url(#bunGrad)"/>
+</svg>

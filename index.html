@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cravers | كريفيرز - Satisfy Your Cravings | أشبع رغبتك</title>
+
+  <!-- Inline SVG Brand Favicon Data-URI (Flame & Burger Emblem) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23121418' stroke='%23FF6B35' stroke-width='3'/%3E%3Cpath d='M50 14 C58 24 64 30 62 42 C60 36 56 34 54 30 C53 40 47 44 43 40 C43 32 46 22 50 14 Z' fill='%23FF6B35'/%3E%3Cpath d='M50 20 C54 28 58 32 56 39 C55 35 52 33 50 31 C49 37 46 39 44 37 C45 31 47 25 50 20 Z' fill='%23FFAA00'/%3E%3Cpath d='M22 47 C22 34 33 32 50 32 C67 32 78 34 78 47 C78 50 75 51 70 51 L30 51 C25 51 22 50 22 47 Z' fill='%23FFA439'/%3E%3Cpath d='M20 52 L80 52 L78 56 L72 56 L70 60 L65 56 L53 56 L50 63 L45 56 L35 56 L33 61 L28 56 L20 56 Z' fill='%23FFC107'/%3E%3Crect x='22' y='57' width='56' height='8' rx='4' fill='%235A2E14'/%3E%3Cpath d='M20 66 Q 35 70 50 67 Q 65 63 80 66 L78 68 L22 68 Z' fill='%234CAF50'/%3E%3Cpath d='M25 69 L75 69 C77 69 78 70 78 72 C78 79 67 82 50 82 C33 82 22 79 22 72 C22 70 23 69 25 69 Z' fill='%23FFA439'/%3E%3C/svg%3E">
+  
+  <!-- Fallback local favicon tags -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+  <!-- Google Fonts: Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <!-- Custom Cravers CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       STICKY NAVBAR
+       ========================================================================= -->
+  <nav class="navbar navbar-expand-lg navbar-cravers sticky-top">
+    <div class="container">
+      <!-- Brand Logo -->
+      <a class="brand-logo-container" href="index.html">
+        <div class="brand-icon">
+          <svg viewBox="0 0 100 100" width="32" height="32">
+            <circle cx="50" cy="50" r="48" fill="#121418"/>
+            <path d="M50 14 C58 24 64 30 62 42 C60 36 56 34 54 30 C53 40 47 44 43 40 C43 32 46 22 50 14 Z" fill="#FF6B35"/>
+            <path d="M50 20 C54 28 58 32 56 39 C55 35 52 33 50 31 C49 37 46 39 44 37 C45 31 47 25 50 20 Z" fill="#FFAA00"/>
+            <path d="M22 47 C22 34 33 32 50 32 C67 32 78 34 78 47 C78 50 75 51 70 51 L30 51 C25 51 22 50 22 47 Z" fill="#FFA439"/>
+            <path d="M20 52 L80 52 L78 56 L72 56 L70 60 L65 56 L53 56 L50 63 L45 56 L35 56 L33 61 L28 56 L20 56 Z" fill="#FFC107"/>
+            <rect x="22" y="57" width="56" height="8" rx="4" fill="#5A2E14"/>
+            <path d="M20 66 Q 35 70 50 67 Q 65 63 80 66 L78 68 L22 68 Z" fill="#4CAF50"/>
+            <path d="M25 69 L75 69 C77 69 78 70 78 72 C78 79 67 82 50 82 C33 82 22 79 22 72 C22 70 23 69 25 69 Z" fill="#FFA439"/>
+          </svg>
+        </div>
+        <div class="brand-title-wrap">
+          <span class="brand-name">CRAVERS <span>| كريفيرز</span></span>
+          <span class="brand-slogan">Satisfy Your Cravings | أشبع رغبتك</span>
+        </div>
+      </a>
+
+      <!-- Search Bar (Desktop) -->
+      <div class="search-bar-wrapper d-none d-lg-block mx-4">
+        <i class="bi bi-search"></i>
+        <input type="text" class="search-bar-input menu-search-input" placeholder="Search burgers, pizzas, fries... / ابحث عن صنفك المفضّل">
+      </div>
+
+      <!-- Right Actions: Admin Link, Theme, Auth, Cart -->
+      <div class="d-flex align-items-center gap-2 ms-auto">
+        <!-- Admin Dashboard Link -->
+        <a href="admin.html" class="btn btn-cravers-outline d-none d-sm-inline-flex align-items-center gap-1 py-1 px-2" style="font-size: 0.8rem;" title="Manage Menu / إدارة المنيو">
+          <i class="bi bi-gear-fill"></i>
+          <span>Admin / الإدارة</span>
+        </a>
+
+        <!-- Dark / Light Theme Toggle -->
+        <button class="theme-toggle-btn" title="Toggle Theme / تغيير النمط">
+          <i class="bi bi-sun-fill"></i>
+        </button>
+
+        <!-- Dynamic User Auth Container -->
+        <div id="navbarAuthContainer">
+          <!-- Populated by authUI.js -->
+          <button class="btn btn-cravers-outline d-flex align-items-center gap-2" id="btnNavbarLogin">
+            <i class="bi bi-person-fill"></i>
+            <span>Login / تسجيل</span>
+          </button>
+        </div>
+
+        <!-- Cart Trigger Button -->
+        <button class="cart-trigger-btn btn-trigger-cart" aria-label="Open Cart">
+          <i class="bi bi-cart3 fs-5"></i>
+          <span class="d-none d-md-inline">Cart</span>
+          <span class="cart-badge-counter">0</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =========================================================================
+       HERO & SEARCH SECTION
+       ========================================================================= -->
+  <header class="hero-banner">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <div class="hero-badge-pill">
+            <i class="bi bi-fire"></i>
+            <span>Crafted Gourmet Fast-Dining | نكهات أصلية لا تُنسى</span>
+          </div>
+          <h1 class="hero-title">
+            Hungry? <span class="highlight">Satisfy Your Cravings</span> Today.
+          </h1>
+          <p class="hero-subtitle">
+            Smash Angus burgers, slow-fermented artisan pizzas, and decadent loaded sides. Order seamlessly and checkout directly via WhatsApp!
+          </p>
+        </div>
+      </div>
+
+      <!-- Mobile Search Input -->
+      <div class="search-bar-wrapper d-block d-lg-none mt-2 mb-3">
+        <i class="bi bi-search"></i>
+        <input type="text" class="search-bar-input menu-search-input" placeholder="Search burgers, pizzas, fries... / ابحث في المنيو">
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="category-pills-bar mt-3" id="categoryPillsContainer">
+        <!-- Rendered by menuUI.js -->
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       MENU ITEMS GRID
+       ========================================================================= -->
+  <main class="container pb-5">
+    <div class="row" id="menuItemsGrid">
+      <!-- Rendered by menuUI.js -->
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       CUSTOMIZATION MODAL
+       ========================================================================= -->
+  <div class="modal fade cravers-modal" id="customizationModal" tabindex="-1" aria-labelledby="customizationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalDishTitle">Customize Dish</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-4">
+            <div class="col-md-5">
+              <div class="rounded-3 overflow-hidden shadow-sm" style="height: 240px;">
+                <img id="modalDishImg" src="" alt="Dish" class="w-100 h-100 object-fit-cover">
+              </div>
+              <div class="mt-3">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <span class="text-secondary small">Base Price / السعر المبدئي:</span>
+                  <span class="fw-bold text-primary" id="modalBasePrice">0 EGP</span>
+                </div>
+                <p id="modalDishDesc" class="text-secondary small line-height-sm"></p>
+              </div>
+            </div>
+            <div class="col-md-7">
+              <!-- Sizes Selection -->
+              <div id="modalSizesContainer"></div>
+              <!-- Extras Selection -->
+              <div id="modalExtrasContainer"></div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center gap-3">
+            <div class="quantity-stepper">
+              <button class="stepper-btn" id="btnModalQtyMinus" aria-label="Decrease quantity">
+                <i class="bi bi-dash"></i>
+              </button>
+              <span class="stepper-val" id="modalQtyValue">1</span>
+              <button class="stepper-btn" id="btnModalQtyPlus" aria-label="Increase quantity">
+                <i class="bi bi-plus"></i>
+              </button>
+            </div>
+            <div>
+              <span class="small text-muted d-block">Total / الإجمالي:</span>
+              <span class="fw-bold fs-5 text-primary" id="modalCalculatedTotal">0 EGP</span>
+            </div>
+          </div>
+          <button type="button" class="btn btn-cravers" id="btnModalAddToCart">
+            <i class="bi bi-cart-plus-fill me-1"></i> Add to Cart / إضافة للسلة
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       SLIDING OFFCANVAS CART
+       ========================================================================= -->
+  <div class="offcanvas offcanvas-end offcanvas-cravers" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
+    <div class="offcanvas-header">
+      <div class="d-flex align-items-center gap-2">
+        <i class="bi bi-bag-check-fill text-primary fs-4"></i>
+        <h5 class="offcanvas-title fw-bold" id="offcanvasCartLabel">Your Cart / سلة الطلبات</h5>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <button type="button" class="btn btn-sm btn-outline-danger py-1 px-2" id="btnClearCart" title="Clear all / تفريغ">
+          <i class="bi bi-trash3"></i>
+        </button>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+    </div>
+
+    <div class="offcanvas-body">
+      <!-- Empty Cart State -->
+      <div id="cartEmptyState" class="empty-cart-state my-auto">
+        <div class="empty-cart-icon">
+          <i class="bi bi-cart-x"></i>
+        </div>
+        <h5 class="fw-bold">Your Cart is Empty</h5>
+        <p class="small text-secondary mb-4">You haven't added any mouthwatering Cravers dishes yet.</p>
+        <button class="btn btn-cravers btn-sm" data-bs-dismiss="offcanvas">
+          <i class="bi bi-arrow-left me-1"></i> Browse Menu / تصفح المنيو
+        </button>
+      </div>
+
+      <!-- Cart Items List Container -->
+      <div id="cartItemsList"></div>
+
+      <!-- Checkout & Price Summary Section -->
+      <div id="cartFooterSection" class="mt-auto pt-3 d-none">
+        <hr class="my-3 border-secondary-subtle">
+
+        <!-- Order Type Switcher -->
+        <label class="form-label small fw-bold text-secondary mb-2">
+          <i class="bi bi-geo-alt-fill text-primary me-1"></i> Order Type / نوع الطلب:
+        </label>
+        <div class="order-type-nav">
+          <button class="order-type-btn active" data-type="delivery">
+            <i class="bi bi-bicycle d-block fs-6"></i> Delivery
+          </button>
+          <button class="order-type-btn" data-type="takeaway">
+            <i class="bi bi-bag-check d-block fs-6"></i> Takeaway
+          </button>
+          <button class="order-type-btn" data-type="dinein">
+            <i class="bi bi-shop d-block fs-6"></i> Dine-in
+          </button>
+        </div>
+
+        <!-- Dynamic Fulfillment Details -->
+        <div id="checkoutDeliveryWrapper" class="mb-3">
+          <textarea class="form-control cravers-form-control" id="checkoutDeliveryAddress" rows="2" placeholder="Full Delivery Address (Street, Building, Apt) / عنوان التوصيل بالتفصيل"></textarea>
+        </div>
+        <div id="checkoutDineinWrapper" class="mb-3 d-none">
+          <input type="text" class="form-control cravers-form-control" id="checkoutTableNumber" placeholder="Table Number (e.g. Table 05) / رقم الطاولة">
+        </div>
+        <div id="checkoutTakeawayWrapper" class="mb-3 d-none">
+          <div class="alert alert-secondary py-2 px-3 small mb-0">
+            <i class="bi bi-info-circle me-1"></i> Ready for pickup in ~20 mins at Cravers Main Gourmet Branch.
+          </div>
+        </div>
+
+        <!-- Verified User Status or Sign-In Prompt -->
+        <div id="checkoutAuthPrompt"></div>
+
+        <!-- Customer Inputs -->
+        <div class="row g-2 mb-2">
+          <div class="col-6">
+            <input type="text" class="form-control cravers-form-control" id="checkoutCustomerName" placeholder="Your Name / الاسم" required>
+          </div>
+          <div class="col-6">
+            <input type="tel" class="form-control cravers-form-control" id="checkoutCustomerPhone" placeholder="Phone / رقم الهاتف" required>
+          </div>
+          <div class="col-12">
+            <input type="email" class="form-control cravers-form-control" id="checkoutCustomerEmail" placeholder="Email / البريد الإلكتروني (اختياري)">
+          </div>
+          <div class="col-12">
+            <input type="text" class="form-control cravers-form-control" id="checkoutCustomerNotes" placeholder="Special Instructions / ملاحظات للطلب (اختياري)">
+          </div>
+        </div>
+
+        <!-- Price Breakdown -->
+        <div class="glass-panel p-3 my-3">
+          <div class="d-flex justify-content-between small text-secondary mb-1">
+            <span>Subtotal / المجموع الفرعي:</span>
+            <span id="cartSummarySubtotal" class="fw-semibold">0 EGP</span>
+          </div>
+          <div class="d-flex justify-content-between small text-secondary mb-1">
+            <span>VAT (10%) / الضريبة:</span>
+            <span id="cartSummaryTax" class="fw-semibold">0 EGP</span>
+          </div>
+          <div class="d-flex justify-content-between small text-secondary mb-2" id="cartSummaryDeliveryRow">
+            <span>Delivery Fee / خدمة التوصيل:</span>
+            <span id="cartSummaryDelivery" class="fw-semibold">25 EGP</span>
+          </div>
+          <div class="d-flex justify-content-between fw-bold fs-5 border-top border-secondary-subtle pt-2 mt-2">
+            <span>Grand Total / الإجمالي:</span>
+            <span id="cartSummaryGrandTotal" class="text-primary">0 EGP</span>
+          </div>
+        </div>
+
+        <!-- WhatsApp Checkout CTA -->
+        <button class="btn btn-whatsapp w-100 py-3" id="btnSubmitOrderWhatsApp">
+          <i class="bi bi-whatsapp fs-5"></i>
+          <span>Confirm & Order via WhatsApp / تأكيد وإرسال</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       AUTHENTICATION & REAL EMAILJS OTP MODAL
+       ========================================================================= -->
+  <div class="modal fade cravers-modal" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <!-- STEP 1: Registration / Sign-In -->
+        <div id="authStepRegister">
+          <div class="modal-header">
+            <div class="d-flex align-items-center gap-2">
+              <i class="bi bi-shield-check text-primary fs-4"></i>
+              <h5 class="modal-title" id="authModalLabel">Sign In / تسجيل الدخول</h5>
+            </div>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form id="authRegisterForm">
+            <div class="modal-body">
+              <p class="small text-secondary mb-4">
+                Enter your details to receive a real 6-digit verification code directly to your email address.
+              </p>
+
+              <div class="mb-3">
+                <label class="form-label small fw-bold text-secondary">Full Name / الاسم الكامل</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-transparent border-secondary text-secondary"><i class="bi bi-person"></i></span>
+                  <input type="text" class="form-control cravers-form-control" id="authName" placeholder="e.g. John Doe" required>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label small fw-bold text-secondary">Email Address / البريد الإلكتروني</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-transparent border-secondary text-secondary"><i class="bi bi-envelope"></i></span>
+                  <input type="email" class="form-control cravers-form-control" id="authEmail" placeholder="e.g. john@example.com" required>
+                </div>
+                <div class="form-text text-muted small">We'll dispatch your secure OTP to this address via EmailJS.</div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label small fw-bold text-secondary">Phone Number / رقم الهاتف (WhatsApp)</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-transparent border-secondary text-secondary"><i class="bi bi-telephone"></i></span>
+                  <input type="tel" class="form-control cravers-form-control" id="authPhone" placeholder="e.g. 01012345678" required>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-cravers-outline" data-bs-dismiss="modal">Cancel / إلغاء</button>
+              <button type="submit" class="btn btn-cravers" id="btnSubmitRegister">
+                <i class="bi bi-shield-lock-fill me-1"></i> Send Verification Code
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- STEP 2: 6-Digit Auto-Advancing OTP Verification -->
+        <div id="authStepOtp" class="d-none">
+          <div class="modal-header">
+            <div class="d-flex align-items-center gap-2">
+              <i class="bi bi-envelope-check-fill text-primary fs-4"></i>
+              <h5 class="modal-title">Verify Email / تأكيد الرمز</h5>
+            </div>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center">
+            <p class="small text-secondary mb-1">We sent a 6-digit verification code to:</p>
+            <div class="fw-bold text-primary mb-3" id="otpTargetEmail">john@example.com</div>
+
+            <!-- 6 PIN Input Boxes -->
+            <div class="otp-container" id="otpBoxContainer">
+              <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="otp-box" data-index="0" autofocus autocomplete="one-time-code">
+              <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="otp-box" data-index="1">
+              <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="otp-box" data-index="2">
+              <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="otp-box" data-index="3">
+              <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="otp-box" data-index="4">
+              <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="otp-box" data-index="5">
+            </div>
+
+            <div class="small text-muted mb-4">
+              Code expires in 5 minutes. You can paste the 6 digits directly.
+            </div>
+
+            <div class="d-flex justify-content-center align-items-center gap-2 mb-3">
+              <button type="button" class="btn btn-sm btn-link text-decoration-none text-secondary" id="btnResendOtp">
+                <i class="bi bi-arrow-repeat me-1"></i> Resend Code <span id="otpCountdownText">(60s)</span>
+              </button>
+            </div>
+
+            <div class="d-flex gap-2">
+              <button type="button" class="btn btn-cravers-outline w-50" id="btnBackToRegister">
+                <i class="bi bi-pencil me-1"></i> Change Email
+              </button>
+              <button type="button" class="btn btn-cravers w-50" id="btnVerifyOtpSubmit">
+                <i class="bi bi-check2-circle me-1"></i> Verify & Sign In
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MOBILE FLOATING CART BAR
+       ========================================================================= -->
+  <div class="mobile-cart-bar" id="mobileCartBar">
+    <div class="d-flex align-items-center gap-2">
+      <i class="bi bi-bag-check-fill fs-5"></i>
+      <span class="fw-bold" id="mobileCartCount">0 items</span>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <span class="fw-bolder fs-6" id="mobileCartTotal">0 EGP</span>
+      <span class="badge bg-white text-dark rounded-pill px-2 py-1">View Cart <i class="bi bi-arrow-right"></i></span>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       TOAST NOTIFICATIONS CONTAINER
+       ========================================================================= -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- =========================================================================
+       SCRIPTS: Bootstrap 5 & EmailJS Browser SDK via CDN
+       ========================================================================= -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <!-- Main ES6 Application Controller -->
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
